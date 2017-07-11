@@ -2,7 +2,7 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
     <classPathEntry
-            location="/home/cytzrs/repository/mysql/mysql-connector-java/6.0.5/mysql-connector-java-6.0.5.jar" />
+            location="/home/cytzrs/Repository/mysql/mysql-connector-java/6.0.6/mysql-connector-java-6.0.6.jar" />
     <context id="context1" targetRuntime="MyBatis3">
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
@@ -10,19 +10,25 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/mybatis"
-                        userId="root" password="1021" />
+                        connectionURL="jdbc:mysql://localhost:3306/fund"
+                        userId="root" password="Fedora@0303" />
         <javaModelGenerator targetPackage="com.test.org.pojo"
-                            targetProject="/home/cytzrs/Desktop/ms/mybatisDemo/src/main/java" />
+                            targetProject="/home/cytzrs/Desktop/test/mybatisDemo/src/main/java" />
 
         <sqlMapGenerator targetPackage="mapper"
-                         targetProject="/home/cytzrs/Desktop/ms/mybatisDemo/src/main/resources" />
+                         targetProject="/home/cytzrs/Desktop/test/mybatisDemo/src/main/resources" />
 
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.test.org.dao"
-                             targetProject="/home/cytzrs/Desktop/ms/mybatisDemo/src/main/java">
+                             targetProject="/home/cytzrs/Desktop/test/mybatisDemo/src/main/java">
         </javaClientGenerator>
 
-        <table tableName="role" domainObjectName="Role"
+        <!-- <table tableName="role" domainObjectName="Role"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="false"/>
+        </table> -->
+        
+        <table tableName="t_fund_apply_log" domainObjectName="FundApplyLog"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false" >
             <property name="useActualColumnNames" value="false"/>
