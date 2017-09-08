@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.org.dao.FundXhInterfaceMapper">
+  <resultMap id="BaseResultMap" type="com.test.org.pojo.FundXhInterface">
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="CHANNEL_NAME" jdbcType="VARCHAR" property="channelName" />
+    <result column="CHANNEL_TYPE" jdbcType="VARCHAR" property="channelType" />
+    <result column="CHANNEL_INTERFACE" jdbcType="VARCHAR" property="channelInterface" />
+    <result column="DESC" jdbcType="VARCHAR" property="desc" />
+    <result column="STATUS" jdbcType="TINYINT" property="status" />
+    <result column="BILL_CYC" jdbcType="VARCHAR" property="billCyc" />
+    <result column="BATCH_NO" jdbcType="VARCHAR" property="batchNo" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+    <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+    <result column="ALIVE_FLAG" jdbcType="VARCHAR" property="aliveFlag" />
+    <result column="MARKET_ID" jdbcType="VARCHAR" property="marketId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.test.org.pojo.FundXhInterface">
+    insert into t_fund_xh_interface (ID, CHANNEL_NAME, CHANNEL_TYPE, 
+      CHANNEL_INTERFACE, DESC, STATUS, 
+      BILL_CYC, BATCH_NO, CREATE_DATE, 
+      UPDATE_DATE, CREATE_USER, UPDATE_USER, 
+      ALIVE_FLAG, MARKET_ID)
+    values (#{id,jdbcType=VARCHAR}, #{channelName,jdbcType=VARCHAR}, #{channelType,jdbcType=VARCHAR}, 
+      #{channelInterface,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+      #{billCyc,jdbcType=VARCHAR}, #{batchNo,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, 
+      #{aliveFlag,jdbcType=VARCHAR}, #{marketId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.org.pojo.FundXhInterface">
+    insert into t_fund_xh_interface
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="channelName != null">
+        CHANNEL_NAME,
+      </if>
+      <if test="channelType != null">
+        CHANNEL_TYPE,
+      </if>
+      <if test="channelInterface != null">
+        CHANNEL_INTERFACE,
+      </if>
+      <if test="desc != null">
+        DESC,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="billCyc != null">
+        BILL_CYC,
+      </if>
+      <if test="batchNo != null">
+        BATCH_NO,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="createUser != null">
+        CREATE_USER,
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER,
+      </if>
+      <if test="aliveFlag != null">
+        ALIVE_FLAG,
+      </if>
+      <if test="marketId != null">
+        MARKET_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="channelName != null">
+        #{channelName,jdbcType=VARCHAR},
+      </if>
+      <if test="channelType != null">
+        #{channelType,jdbcType=VARCHAR},
+      </if>
+      <if test="channelInterface != null">
+        #{channelInterface,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null">
+        #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="billCyc != null">
+        #{billCyc,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNo != null">
+        #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="aliveFlag != null">
+        #{aliveFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="marketId != null">
+        #{marketId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.org.dao.QaAnswerMapper">
+  <resultMap id="BaseResultMap" type="com.test.org.pojo.QaAnswer">
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="CREATOR_ID" jdbcType="VARCHAR" property="creatorId" />
+    <result column="QUESTION_ID" jdbcType="VARCHAR" property="questionId" />
+    <result column="REGION_ID" jdbcType="VARCHAR" property="regionId" />
+    <result column="REGION_NAME" jdbcType="VARCHAR" property="regionName" />
+    <result column="HAS_ATTACHMENT" jdbcType="TINYINT" property="hasAttachment" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="FORWARD_COUNT" jdbcType="BIGINT" property="forwardCount" />
+    <result column="CONCERN_COUNT" jdbcType="INTEGER" property="concernCount" />
+    <result column="LIKE_COUNT" jdbcType="INTEGER" property="likeCount" />
+    <result column="REPLY_COUNT" jdbcType="INTEGER" property="replyCount" />
+    <result column="IS_FORWARD" jdbcType="TINYINT" property="isForward" />
+    <result column="FORWARD_POST_ID" jdbcType="VARCHAR" property="forwardPostId" />
+    <result column="IS_BEST_POST" jdbcType="TINYINT" property="isBestPost" />
+    <result column="ALIVE_FLAG" jdbcType="VARCHAR" property="aliveFlag" />
+    <result column="MARKET_ID" jdbcType="VARCHAR" property="marketId" />
+    <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="EXT1" jdbcType="VARCHAR" property="ext1" />
+    <result column="EXT2" jdbcType="VARCHAR" property="ext2" />
+    <result column="EXT3" jdbcType="VARCHAR" property="ext3" />
+    <result column="EXT4" jdbcType="VARCHAR" property="ext4" />
+    <result column="EXT5" jdbcType="VARCHAR" property="ext5" />
+    <result column="EXT6" jdbcType="VARCHAR" property="ext6" />
+    <result column="EXT7" jdbcType="VARCHAR" property="ext7" />
+    <result column="EXT8" jdbcType="VARCHAR" property="ext8" />
+    <result column="EXT9" jdbcType="VARCHAR" property="ext9" />
+    <result column="EXT10" jdbcType="VARCHAR" property="ext10" />
+    <result column="POST_PARENT_ID" jdbcType="VARCHAR" property="postParentId" />
+    <result column="BROWSE_COUNT" jdbcType="VARCHAR" property="browseCount" />
+    <result column="IS_SHARE" jdbcType="VARCHAR" property="isShare" />
+    <result column="SHARE_URL" jdbcType="VARCHAR" property="shareUrl" />
+    <result column="IS_ASKER" jdbcType="INTEGER" property="isAsker" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.test.org.pojo.QaAnswerWithBLOBs">
+    <result column="TITLE" jdbcType="LONGVARCHAR" property="title" />
+    <result column="CONTENT" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, CREATOR_ID, QUESTION_ID, REGION_ID, REGION_NAME, HAS_ATTACHMENT, TYPE, FORWARD_COUNT, 
+    CONCERN_COUNT, LIKE_COUNT, REPLY_COUNT, IS_FORWARD, FORWARD_POST_ID, IS_BEST_POST, 
+    ALIVE_FLAG, MARKET_ID, UPDATE_USER, UPDATE_DATE, CREATE_USER, CREATE_DATE, EXT1, 
+    EXT2, EXT3, EXT4, EXT5, EXT6, EXT7, EXT8, EXT9, EXT10, POST_PARENT_ID, BROWSE_COUNT, 
+    IS_SHARE, SHARE_URL, IS_ASKER
+  </sql>
+  <sql id="Blob_Column_List">
+    TITLE, CONTENT
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.test.org.pojo.QaAnswerExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_qa_answer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.test.org.pojo.QaAnswerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_qa_answer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.test.org.pojo.QaAnswerExample">
+    delete from t_qa_answer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.test.org.pojo.QaAnswerWithBLOBs">
+    insert into t_qa_answer (ID, CREATOR_ID, QUESTION_ID, 
+      REGION_ID, REGION_NAME, HAS_ATTACHMENT, 
+      TYPE, FORWARD_COUNT, CONCERN_COUNT, 
+      LIKE_COUNT, REPLY_COUNT, IS_FORWARD, 
+      FORWARD_POST_ID, IS_BEST_POST, ALIVE_FLAG, 
+      MARKET_ID, UPDATE_USER, UPDATE_DATE, 
+      CREATE_USER, CREATE_DATE, EXT1, 
+      EXT2, EXT3, EXT4, EXT5, 
+      EXT6, EXT7, EXT8, EXT9, 
+      EXT10, POST_PARENT_ID, BROWSE_COUNT, 
+      IS_SHARE, SHARE_URL, IS_ASKER, 
+      TITLE, CONTENT)
+    values (#{id,jdbcType=VARCHAR}, #{creatorId,jdbcType=VARCHAR}, #{questionId,jdbcType=VARCHAR}, 
+      #{regionId,jdbcType=VARCHAR}, #{regionName,jdbcType=VARCHAR}, #{hasAttachment,jdbcType=TINYINT}, 
+      #{type,jdbcType=VARCHAR}, #{forwardCount,jdbcType=BIGINT}, #{concernCount,jdbcType=INTEGER}, 
+      #{likeCount,jdbcType=INTEGER}, #{replyCount,jdbcType=INTEGER}, #{isForward,jdbcType=TINYINT}, 
+      #{forwardPostId,jdbcType=VARCHAR}, #{isBestPost,jdbcType=TINYINT}, #{aliveFlag,jdbcType=VARCHAR}, 
+      #{marketId,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{ext1,jdbcType=VARCHAR}, 
+      #{ext2,jdbcType=VARCHAR}, #{ext3,jdbcType=VARCHAR}, #{ext4,jdbcType=VARCHAR}, #{ext5,jdbcType=VARCHAR}, 
+      #{ext6,jdbcType=VARCHAR}, #{ext7,jdbcType=VARCHAR}, #{ext8,jdbcType=VARCHAR}, #{ext9,jdbcType=VARCHAR}, 
+      #{ext10,jdbcType=VARCHAR}, #{postParentId,jdbcType=VARCHAR}, #{browseCount,jdbcType=VARCHAR}, 
+      #{isShare,jdbcType=VARCHAR}, #{shareUrl,jdbcType=VARCHAR}, #{isAsker,jdbcType=INTEGER}, 
+      #{title,jdbcType=LONGVARCHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.org.pojo.QaAnswerWithBLOBs">
+    insert into t_qa_answer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="creatorId != null">
+        CREATOR_ID,
+      </if>
+      <if test="questionId != null">
+        QUESTION_ID,
+      </if>
+      <if test="regionId != null">
+        REGION_ID,
+      </if>
+      <if test="regionName != null">
+        REGION_NAME,
+      </if>
+      <if test="hasAttachment != null">
+        HAS_ATTACHMENT,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="forwardCount != null">
+        FORWARD_COUNT,
+      </if>
+      <if test="concernCount != null">
+        CONCERN_COUNT,
+      </if>
+      <if test="likeCount != null">
+        LIKE_COUNT,
+      </if>
+      <if test="replyCount != null">
+        REPLY_COUNT,
+      </if>
+      <if test="isForward != null">
+        IS_FORWARD,
+      </if>
+      <if test="forwardPostId != null">
+        FORWARD_POST_ID,
+      </if>
+      <if test="isBestPost != null">
+        IS_BEST_POST,
+      </if>
+      <if test="aliveFlag != null">
+        ALIVE_FLAG,
+      </if>
+      <if test="marketId != null">
+        MARKET_ID,
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="createUser != null">
+        CREATE_USER,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="ext1 != null">
+        EXT1,
+      </if>
+      <if test="ext2 != null">
+        EXT2,
+      </if>
+      <if test="ext3 != null">
+        EXT3,
+      </if>
+      <if test="ext4 != null">
+        EXT4,
+      </if>
+      <if test="ext5 != null">
+        EXT5,
+      </if>
+      <if test="ext6 != null">
+        EXT6,
+      </if>
+      <if test="ext7 != null">
+        EXT7,
+      </if>
+      <if test="ext8 != null">
+        EXT8,
+      </if>
+      <if test="ext9 != null">
+        EXT9,
+      </if>
+      <if test="ext10 != null">
+        EXT10,
+      </if>
+      <if test="postParentId != null">
+        POST_PARENT_ID,
+      </if>
+      <if test="browseCount != null">
+        BROWSE_COUNT,
+      </if>
+      <if test="isShare != null">
+        IS_SHARE,
+      </if>
+      <if test="shareUrl != null">
+        SHARE_URL,
+      </if>
+      <if test="isAsker != null">
+        IS_ASKER,
+      </if>
+      <if test="title != null">
+        TITLE,
+      </if>
+      <if test="content != null">
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null">
+        #{creatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="questionId != null">
+        #{questionId,jdbcType=VARCHAR},
+      </if>
+      <if test="regionId != null">
+        #{regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="regionName != null">
+        #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="hasAttachment != null">
+        #{hasAttachment,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="forwardCount != null">
+        #{forwardCount,jdbcType=BIGINT},
+      </if>
+      <if test="concernCount != null">
+        #{concernCount,jdbcType=INTEGER},
+      </if>
+      <if test="likeCount != null">
+        #{likeCount,jdbcType=INTEGER},
+      </if>
+      <if test="replyCount != null">
+        #{replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="isForward != null">
+        #{isForward,jdbcType=TINYINT},
+      </if>
+      <if test="forwardPostId != null">
+        #{forwardPostId,jdbcType=VARCHAR},
+      </if>
+      <if test="isBestPost != null">
+        #{isBestPost,jdbcType=TINYINT},
+      </if>
+      <if test="aliveFlag != null">
+        #{aliveFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="marketId != null">
+        #{marketId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ext1 != null">
+        #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null">
+        #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="ext3 != null">
+        #{ext3,jdbcType=VARCHAR},
+      </if>
+      <if test="ext4 != null">
+        #{ext4,jdbcType=VARCHAR},
+      </if>
+      <if test="ext5 != null">
+        #{ext5,jdbcType=VARCHAR},
+      </if>
+      <if test="ext6 != null">
+        #{ext6,jdbcType=VARCHAR},
+      </if>
+      <if test="ext7 != null">
+        #{ext7,jdbcType=VARCHAR},
+      </if>
+      <if test="ext8 != null">
+        #{ext8,jdbcType=VARCHAR},
+      </if>
+      <if test="ext9 != null">
+        #{ext9,jdbcType=VARCHAR},
+      </if>
+      <if test="ext10 != null">
+        #{ext10,jdbcType=VARCHAR},
+      </if>
+      <if test="postParentId != null">
+        #{postParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="browseCount != null">
+        #{browseCount,jdbcType=VARCHAR},
+      </if>
+      <if test="isShare != null">
+        #{isShare,jdbcType=VARCHAR},
+      </if>
+      <if test="shareUrl != null">
+        #{shareUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isAsker != null">
+        #{isAsker,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.test.org.pojo.QaAnswerExample" resultType="java.lang.Long">
+    select count(*) from t_qa_answer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_qa_answer
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatorId != null">
+        CREATOR_ID = #{record.creatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.questionId != null">
+        QUESTION_ID = #{record.questionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regionId != null">
+        REGION_ID = #{record.regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regionName != null">
+        REGION_NAME = #{record.regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hasAttachment != null">
+        HAS_ATTACHMENT = #{record.hasAttachment,jdbcType=TINYINT},
+      </if>
+      <if test="record.type != null">
+        TYPE = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.forwardCount != null">
+        FORWARD_COUNT = #{record.forwardCount,jdbcType=BIGINT},
+      </if>
+      <if test="record.concernCount != null">
+        CONCERN_COUNT = #{record.concernCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.likeCount != null">
+        LIKE_COUNT = #{record.likeCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.replyCount != null">
+        REPLY_COUNT = #{record.replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.isForward != null">
+        IS_FORWARD = #{record.isForward,jdbcType=TINYINT},
+      </if>
+      <if test="record.forwardPostId != null">
+        FORWARD_POST_ID = #{record.forwardPostId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isBestPost != null">
+        IS_BEST_POST = #{record.isBestPost,jdbcType=TINYINT},
+      </if>
+      <if test="record.aliveFlag != null">
+        ALIVE_FLAG = #{record.aliveFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.marketId != null">
+        MARKET_ID = #{record.marketId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateUser != null">
+        UPDATE_USER = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateDate != null">
+        UPDATE_DATE = #{record.updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createUser != null">
+        CREATE_USER = #{record.createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null">
+        CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ext1 != null">
+        EXT1 = #{record.ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext2 != null">
+        EXT2 = #{record.ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext3 != null">
+        EXT3 = #{record.ext3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext4 != null">
+        EXT4 = #{record.ext4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext5 != null">
+        EXT5 = #{record.ext5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext6 != null">
+        EXT6 = #{record.ext6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext7 != null">
+        EXT7 = #{record.ext7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext8 != null">
+        EXT8 = #{record.ext8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext9 != null">
+        EXT9 = #{record.ext9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext10 != null">
+        EXT10 = #{record.ext10,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postParentId != null">
+        POST_PARENT_ID = #{record.postParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.browseCount != null">
+        BROWSE_COUNT = #{record.browseCount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isShare != null">
+        IS_SHARE = #{record.isShare,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shareUrl != null">
+        SHARE_URL = #{record.shareUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isAsker != null">
+        IS_ASKER = #{record.isAsker,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null">
+        TITLE = #{record.title,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.content != null">
+        CONTENT = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update t_qa_answer
+    set ID = #{record.id,jdbcType=VARCHAR},
+      CREATOR_ID = #{record.creatorId,jdbcType=VARCHAR},
+      QUESTION_ID = #{record.questionId,jdbcType=VARCHAR},
+      REGION_ID = #{record.regionId,jdbcType=VARCHAR},
+      REGION_NAME = #{record.regionName,jdbcType=VARCHAR},
+      HAS_ATTACHMENT = #{record.hasAttachment,jdbcType=TINYINT},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      FORWARD_COUNT = #{record.forwardCount,jdbcType=BIGINT},
+      CONCERN_COUNT = #{record.concernCount,jdbcType=INTEGER},
+      LIKE_COUNT = #{record.likeCount,jdbcType=INTEGER},
+      REPLY_COUNT = #{record.replyCount,jdbcType=INTEGER},
+      IS_FORWARD = #{record.isForward,jdbcType=TINYINT},
+      FORWARD_POST_ID = #{record.forwardPostId,jdbcType=VARCHAR},
+      IS_BEST_POST = #{record.isBestPost,jdbcType=TINYINT},
+      ALIVE_FLAG = #{record.aliveFlag,jdbcType=VARCHAR},
+      MARKET_ID = #{record.marketId,jdbcType=VARCHAR},
+      UPDATE_USER = #{record.updateUser,jdbcType=VARCHAR},
+      UPDATE_DATE = #{record.updateDate,jdbcType=TIMESTAMP},
+      CREATE_USER = #{record.createUser,jdbcType=VARCHAR},
+      CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+      EXT1 = #{record.ext1,jdbcType=VARCHAR},
+      EXT2 = #{record.ext2,jdbcType=VARCHAR},
+      EXT3 = #{record.ext3,jdbcType=VARCHAR},
+      EXT4 = #{record.ext4,jdbcType=VARCHAR},
+      EXT5 = #{record.ext5,jdbcType=VARCHAR},
+      EXT6 = #{record.ext6,jdbcType=VARCHAR},
+      EXT7 = #{record.ext7,jdbcType=VARCHAR},
+      EXT8 = #{record.ext8,jdbcType=VARCHAR},
+      EXT9 = #{record.ext9,jdbcType=VARCHAR},
+      EXT10 = #{record.ext10,jdbcType=VARCHAR},
+      POST_PARENT_ID = #{record.postParentId,jdbcType=VARCHAR},
+      BROWSE_COUNT = #{record.browseCount,jdbcType=VARCHAR},
+      IS_SHARE = #{record.isShare,jdbcType=VARCHAR},
+      SHARE_URL = #{record.shareUrl,jdbcType=VARCHAR},
+      IS_ASKER = #{record.isAsker,jdbcType=INTEGER},
+      TITLE = #{record.title,jdbcType=LONGVARCHAR},
+      CONTENT = #{record.content,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_qa_answer
+    set ID = #{record.id,jdbcType=VARCHAR},
+      CREATOR_ID = #{record.creatorId,jdbcType=VARCHAR},
+      QUESTION_ID = #{record.questionId,jdbcType=VARCHAR},
+      REGION_ID = #{record.regionId,jdbcType=VARCHAR},
+      REGION_NAME = #{record.regionName,jdbcType=VARCHAR},
+      HAS_ATTACHMENT = #{record.hasAttachment,jdbcType=TINYINT},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      FORWARD_COUNT = #{record.forwardCount,jdbcType=BIGINT},
+      CONCERN_COUNT = #{record.concernCount,jdbcType=INTEGER},
+      LIKE_COUNT = #{record.likeCount,jdbcType=INTEGER},
+      REPLY_COUNT = #{record.replyCount,jdbcType=INTEGER},
+      IS_FORWARD = #{record.isForward,jdbcType=TINYINT},
+      FORWARD_POST_ID = #{record.forwardPostId,jdbcType=VARCHAR},
+      IS_BEST_POST = #{record.isBestPost,jdbcType=TINYINT},
+      ALIVE_FLAG = #{record.aliveFlag,jdbcType=VARCHAR},
+      MARKET_ID = #{record.marketId,jdbcType=VARCHAR},
+      UPDATE_USER = #{record.updateUser,jdbcType=VARCHAR},
+      UPDATE_DATE = #{record.updateDate,jdbcType=TIMESTAMP},
+      CREATE_USER = #{record.createUser,jdbcType=VARCHAR},
+      CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+      EXT1 = #{record.ext1,jdbcType=VARCHAR},
+      EXT2 = #{record.ext2,jdbcType=VARCHAR},
+      EXT3 = #{record.ext3,jdbcType=VARCHAR},
+      EXT4 = #{record.ext4,jdbcType=VARCHAR},
+      EXT5 = #{record.ext5,jdbcType=VARCHAR},
+      EXT6 = #{record.ext6,jdbcType=VARCHAR},
+      EXT7 = #{record.ext7,jdbcType=VARCHAR},
+      EXT8 = #{record.ext8,jdbcType=VARCHAR},
+      EXT9 = #{record.ext9,jdbcType=VARCHAR},
+      EXT10 = #{record.ext10,jdbcType=VARCHAR},
+      POST_PARENT_ID = #{record.postParentId,jdbcType=VARCHAR},
+      BROWSE_COUNT = #{record.browseCount,jdbcType=VARCHAR},
+      IS_SHARE = #{record.isShare,jdbcType=VARCHAR},
+      SHARE_URL = #{record.shareUrl,jdbcType=VARCHAR},
+      IS_ASKER = #{record.isAsker,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
