@@ -41,6 +41,8 @@ public class QaAnswer {
 
     private String createUser;
 
+    private Boolean checkStatus;
+
     private Date createDate;
 
     private String ext1;
@@ -65,13 +67,19 @@ public class QaAnswer {
 
     private String postParentId;
 
-    private String browseCount;
+    private Integer browseCount;
 
     private String isShare;
 
     private String shareUrl;
 
     private Integer isAsker;
+
+    private Boolean isRecommend;
+
+    private Date verfiyDate;
+
+    private Integer floor;
 
     public String getId() {
         return id;
@@ -225,6 +233,14 @@ public class QaAnswer {
         this.createUser = createUser;
     }
 
+    public Boolean getCheckStatus() {
+        return checkStatus;
+    }
+
+    public void setCheckStatus(Boolean checkStatus) {
+        this.checkStatus = checkStatus;
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
@@ -321,11 +337,11 @@ public class QaAnswer {
         this.postParentId = postParentId;
     }
 
-    public String getBrowseCount() {
+    public Integer getBrowseCount() {
         return browseCount;
     }
 
-    public void setBrowseCount(String browseCount) {
+    public void setBrowseCount(Integer browseCount) {
         this.browseCount = browseCount;
     }
 
@@ -351,5 +367,29 @@ public class QaAnswer {
 
     public void setIsAsker(Integer isAsker) {
         this.isAsker = isAsker;
+    }
+
+    public Boolean getIsRecommend() {
+        return isRecommend;
+    }
+
+    public void setIsRecommend(Boolean isRecommend) {
+        this.isRecommend = isRecommend;
+    }
+
+    public Date getVerfiyDate() {
+        return verfiyDate;
+    }
+
+    public void setVerfiyDate(Date verfiyDate) {
+        this.verfiyDate = verfiyDate;
+    }
+
+    public Integer getFloor() {
+        return floor;
+    }
+
+    public void setFloor(Integer floor) {
+        this.floor = floor;
     }
 }

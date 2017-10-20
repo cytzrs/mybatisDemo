@@ -1355,6 +1355,66 @@ public class QaAnswerExample {
             return (Criteria) this;
         }
 
+        public Criteria andCheckStatusIsNull() {
+            addCriterion("CHECK_STATUS is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckStatusIsNotNull() {
+            addCriterion("CHECK_STATUS is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckStatusEqualTo(Boolean value) {
+            addCriterion("CHECK_STATUS =", value, "checkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckStatusNotEqualTo(Boolean value) {
+            addCriterion("CHECK_STATUS <>", value, "checkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckStatusGreaterThan(Boolean value) {
+            addCriterion("CHECK_STATUS >", value, "checkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckStatusGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("CHECK_STATUS >=", value, "checkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckStatusLessThan(Boolean value) {
+            addCriterion("CHECK_STATUS <", value, "checkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckStatusLessThanOrEqualTo(Boolean value) {
+            addCriterion("CHECK_STATUS <=", value, "checkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckStatusIn(List<Boolean> values) {
+            addCriterion("CHECK_STATUS in", values, "checkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckStatusNotIn(List<Boolean> values) {
+            addCriterion("CHECK_STATUS not in", values, "checkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckStatusBetween(Boolean value1, Boolean value2) {
+            addCriterion("CHECK_STATUS between", value1, value2, "checkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckStatusNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("CHECK_STATUS not between", value1, value2, "checkStatus");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateDateIsNull() {
             addCriterion("CREATE_DATE is null");
             return (Criteria) this;
@@ -2195,62 +2255,52 @@ public class QaAnswerExample {
             return (Criteria) this;
         }
 
-        public Criteria andBrowseCountEqualTo(String value) {
+        public Criteria andBrowseCountEqualTo(Integer value) {
             addCriterion("BROWSE_COUNT =", value, "browseCount");
             return (Criteria) this;
         }
 
-        public Criteria andBrowseCountNotEqualTo(String value) {
+        public Criteria andBrowseCountNotEqualTo(Integer value) {
             addCriterion("BROWSE_COUNT <>", value, "browseCount");
             return (Criteria) this;
         }
 
-        public Criteria andBrowseCountGreaterThan(String value) {
+        public Criteria andBrowseCountGreaterThan(Integer value) {
             addCriterion("BROWSE_COUNT >", value, "browseCount");
             return (Criteria) this;
         }
 
-        public Criteria andBrowseCountGreaterThanOrEqualTo(String value) {
+        public Criteria andBrowseCountGreaterThanOrEqualTo(Integer value) {
             addCriterion("BROWSE_COUNT >=", value, "browseCount");
             return (Criteria) this;
         }
 
-        public Criteria andBrowseCountLessThan(String value) {
+        public Criteria andBrowseCountLessThan(Integer value) {
             addCriterion("BROWSE_COUNT <", value, "browseCount");
             return (Criteria) this;
         }
 
-        public Criteria andBrowseCountLessThanOrEqualTo(String value) {
+        public Criteria andBrowseCountLessThanOrEqualTo(Integer value) {
             addCriterion("BROWSE_COUNT <=", value, "browseCount");
             return (Criteria) this;
         }
 
-        public Criteria andBrowseCountLike(String value) {
-            addCriterion("BROWSE_COUNT like", value, "browseCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andBrowseCountNotLike(String value) {
-            addCriterion("BROWSE_COUNT not like", value, "browseCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andBrowseCountIn(List<String> values) {
+        public Criteria andBrowseCountIn(List<Integer> values) {
             addCriterion("BROWSE_COUNT in", values, "browseCount");
             return (Criteria) this;
         }
 
-        public Criteria andBrowseCountNotIn(List<String> values) {
+        public Criteria andBrowseCountNotIn(List<Integer> values) {
             addCriterion("BROWSE_COUNT not in", values, "browseCount");
             return (Criteria) this;
         }
 
-        public Criteria andBrowseCountBetween(String value1, String value2) {
+        public Criteria andBrowseCountBetween(Integer value1, Integer value2) {
             addCriterion("BROWSE_COUNT between", value1, value2, "browseCount");
             return (Criteria) this;
         }
 
-        public Criteria andBrowseCountNotBetween(String value1, String value2) {
+        public Criteria andBrowseCountNotBetween(Integer value1, Integer value2) {
             addCriterion("BROWSE_COUNT not between", value1, value2, "browseCount");
             return (Criteria) this;
         }
@@ -2452,6 +2502,186 @@ public class QaAnswerExample {
 
         public Criteria andIsAskerNotBetween(Integer value1, Integer value2) {
             addCriterion("IS_ASKER not between", value1, value2, "isAsker");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendIsNull() {
+            addCriterion("IS_RECOMMEND is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendIsNotNull() {
+            addCriterion("IS_RECOMMEND is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendEqualTo(Boolean value) {
+            addCriterion("IS_RECOMMEND =", value, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendNotEqualTo(Boolean value) {
+            addCriterion("IS_RECOMMEND <>", value, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendGreaterThan(Boolean value) {
+            addCriterion("IS_RECOMMEND >", value, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("IS_RECOMMEND >=", value, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendLessThan(Boolean value) {
+            addCriterion("IS_RECOMMEND <", value, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendLessThanOrEqualTo(Boolean value) {
+            addCriterion("IS_RECOMMEND <=", value, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendIn(List<Boolean> values) {
+            addCriterion("IS_RECOMMEND in", values, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendNotIn(List<Boolean> values) {
+            addCriterion("IS_RECOMMEND not in", values, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendBetween(Boolean value1, Boolean value2) {
+            addCriterion("IS_RECOMMEND between", value1, value2, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRecommendNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("IS_RECOMMEND not between", value1, value2, "isRecommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerfiyDateIsNull() {
+            addCriterion("VERFIY_DATE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerfiyDateIsNotNull() {
+            addCriterion("VERFIY_DATE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerfiyDateEqualTo(Date value) {
+            addCriterion("VERFIY_DATE =", value, "verfiyDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerfiyDateNotEqualTo(Date value) {
+            addCriterion("VERFIY_DATE <>", value, "verfiyDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerfiyDateGreaterThan(Date value) {
+            addCriterion("VERFIY_DATE >", value, "verfiyDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerfiyDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("VERFIY_DATE >=", value, "verfiyDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerfiyDateLessThan(Date value) {
+            addCriterion("VERFIY_DATE <", value, "verfiyDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerfiyDateLessThanOrEqualTo(Date value) {
+            addCriterion("VERFIY_DATE <=", value, "verfiyDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerfiyDateIn(List<Date> values) {
+            addCriterion("VERFIY_DATE in", values, "verfiyDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerfiyDateNotIn(List<Date> values) {
+            addCriterion("VERFIY_DATE not in", values, "verfiyDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerfiyDateBetween(Date value1, Date value2) {
+            addCriterion("VERFIY_DATE between", value1, value2, "verfiyDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerfiyDateNotBetween(Date value1, Date value2) {
+            addCriterion("VERFIY_DATE not between", value1, value2, "verfiyDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andFloorIsNull() {
+            addCriterion("FLOOR is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFloorIsNotNull() {
+            addCriterion("FLOOR is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFloorEqualTo(Integer value) {
+            addCriterion("FLOOR =", value, "floor");
+            return (Criteria) this;
+        }
+
+        public Criteria andFloorNotEqualTo(Integer value) {
+            addCriterion("FLOOR <>", value, "floor");
+            return (Criteria) this;
+        }
+
+        public Criteria andFloorGreaterThan(Integer value) {
+            addCriterion("FLOOR >", value, "floor");
+            return (Criteria) this;
+        }
+
+        public Criteria andFloorGreaterThanOrEqualTo(Integer value) {
+            addCriterion("FLOOR >=", value, "floor");
+            return (Criteria) this;
+        }
+
+        public Criteria andFloorLessThan(Integer value) {
+            addCriterion("FLOOR <", value, "floor");
+            return (Criteria) this;
+        }
+
+        public Criteria andFloorLessThanOrEqualTo(Integer value) {
+            addCriterion("FLOOR <=", value, "floor");
+            return (Criteria) this;
+        }
+
+        public Criteria andFloorIn(List<Integer> values) {
+            addCriterion("FLOOR in", values, "floor");
+            return (Criteria) this;
+        }
+
+        public Criteria andFloorNotIn(List<Integer> values) {
+            addCriterion("FLOOR not in", values, "floor");
+            return (Criteria) this;
+        }
+
+        public Criteria andFloorBetween(Integer value1, Integer value2) {
+            addCriterion("FLOOR between", value1, value2, "floor");
+            return (Criteria) this;
+        }
+
+        public Criteria andFloorNotBetween(Integer value1, Integer value2) {
+            addCriterion("FLOOR not between", value1, value2, "floor");
             return (Criteria) this;
         }
     }

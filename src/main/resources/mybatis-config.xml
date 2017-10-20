@@ -15,10 +15,13 @@
 			<property name="password" value="${password}" />
 		</dataSource>
 	</environment>
+
+
 </environments>
+
 
 <!-- mapping 文件路径配置 -->
 <mappers>
-	<mapper resource="./mapper/RoleMapper.xml" />
+	<mapper resource="./mapper/QaAttachmentMapper.xml" />
 </mappers>
 </configuration>

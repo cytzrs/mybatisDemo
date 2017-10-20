@@ -25,6 +25,8 @@ public class QaQuestion {
 
     private Byte isBestPost;
 
+    private Boolean checkStatus;
+
     private String aliveFlag;
 
     private String marketId;
@@ -59,11 +61,21 @@ public class QaQuestion {
 
     private String postParentId;
 
-    private String browseCount;
+    private Integer browseCount;
 
     private String isShare;
 
     private String shareUrl;
+
+    private Integer floor;
+
+    private Date verfiyDae;
+
+    private Integer answerCount;
+
+    private Integer inviteCount;
+
+    private Boolean isRecommend;
 
     public String getId() {
         return id;
@@ -151,6 +163,14 @@ public class QaQuestion {
 
     public void setIsBestPost(Byte isBestPost) {
         this.isBestPost = isBestPost;
+    }
+
+    public Boolean getCheckStatus() {
+        return checkStatus;
+    }
+
+    public void setCheckStatus(Boolean checkStatus) {
+        this.checkStatus = checkStatus;
     }
 
     public String getAliveFlag() {
@@ -289,11 +309,11 @@ public class QaQuestion {
         this.postParentId = postParentId;
     }
 
-    public String getBrowseCount() {
+    public Integer getBrowseCount() {
         return browseCount;
     }
 
-    public void setBrowseCount(String browseCount) {
+    public void setBrowseCount(Integer browseCount) {
         this.browseCount = browseCount;
     }
 
@@ -311,5 +331,45 @@ public class QaQuestion {
 
     public void setShareUrl(String shareUrl) {
         this.shareUrl = shareUrl;
+    }
+
+    public Integer getFloor() {
+        return floor;
+    }
+
+    public void setFloor(Integer floor) {
+        this.floor = floor;
+    }
+
+    public Date getVerfiyDae() {
+        return verfiyDae;
+    }
+
+    public void setVerfiyDae(Date verfiyDae) {
+        this.verfiyDae = verfiyDae;
+    }
+
+    public Integer getAnswerCount() {
+        return answerCount;
+    }
+
+    public void setAnswerCount(Integer answerCount) {
+        this.answerCount = answerCount;
+    }
+
+    public Integer getInviteCount() {
+        return inviteCount;
+    }
+
+    public void setInviteCount(Integer inviteCount) {
+        this.inviteCount = inviteCount;
+    }
+
+    public Boolean getIsRecommend() {
+        return isRecommend;
+    }
+
+    public void setIsRecommend(Boolean isRecommend) {
+        this.isRecommend = isRecommend;
     }
 }

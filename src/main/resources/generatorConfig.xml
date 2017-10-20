@@ -2,24 +2,24 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
     <classPathEntry
-            location="/home/cytzrs/Repository/mysql/mysql-connector-java/6.0.6/mysql-connector-java-6.0.6.jar" />
+            location="D:\Repository\mysql\mysql-connector-java\6.0.6\mysql-connector-java-6.0.6.jar" />
     <context id="context1" targetRuntime="MyBatis3">
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="true" />
         </commentGenerator>
 
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/fund"
-                        userId="root" password="Fedora@0303" />
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://test-web.mysql.rds.aliyuncs.com:3306/test_db_web"
+                        userId="test_bldz" password="Bldz123!@#" />
         <javaModelGenerator targetPackage="com.test.org.pojo"
-                            targetProject="/home/cytzrs/Desktop/test/mybatisDemo/src/main/java" />
+                            targetProject="C:\Users\liyang\Desktop\blog\mybatisDemo\src\main\java" />
 
         <sqlMapGenerator targetPackage="mapper"
-                         targetProject="/home/cytzrs/Desktop/test/mybatisDemo/src/main/resources" />
+                         targetProject="C:\Users\liyang\Desktop\blog\mybatisDemo\src\main\resources" />
 
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.test.org.dao"
-                             targetProject="/home/cytzrs/Desktop/test/mybatisDemo/src/main/java">
+                             targetProject="C:\Users\liyang\Desktop\blog\mybatisDemo\src\main\java">
         </javaClientGenerator>
 
         <!-- <table tableName="role" domainObjectName="Role"
@@ -27,10 +27,112 @@
                enableSelectByExample="false" selectByExampleQueryId="false" >
             <property name="useActualColumnNames" value="false"/>
         </table> -->
-        
-        <table tableName="t_fund_apply_log" domainObjectName="FundApplyLog"
+
+        <!--<table tableName="t_qa_question" domainObjectName="QaQuestion"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"  >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="t_qa_answer" domainObjectName="QaAnswer"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="t_qa_answer_like_map" domainObjectName="QaAnswerLikeMap"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="t_qa_attachment" domainObjectName="QaAttachment"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>-->
+
+<!--
+        <table tableName="t_qa_invite" domainObjectName="QaInvite"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+-->
+
+       <!-- <table tableName="t_qa_answer" domainObjectName="QaAnswer"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>-->
+
+        <!--<table tableName="t_qa_question" domainObjectName="QaQuestion"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>-->
+
+        <table tableName="t_qa_reply" domainObjectName="QaReply"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="t_qa_content" domainObjectName="QaContent"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="t_qa_region" domainObjectName="QaRegion"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table tableName="t_qa_like" domainObjectName="QaLike"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table tableName="t_qa_answer" domainObjectName="QaAnswer"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="t_qa_question" domainObjectName="QaQuestion"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="t_qa_reply" domainObjectName="QaReply"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="t_prom_live" domainObjectName="PromLive"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="t_prom_lottery" domainObjectName="PromLottery"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="t_prom_award" domainObjectName="PromAward"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="t_prom_record" domainObjectName="PromRecord"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
             <property name="useActualColumnNames" value="false"/>
         </table>
     </context>
