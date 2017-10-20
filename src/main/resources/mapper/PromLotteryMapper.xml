@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.org.dao.PromLotteryMapper">
+  <resultMap id="BaseResultMap" type="com.test.org.pojo.PromLottery">
+    <result column="LOTTERY_ID" jdbcType="VARCHAR" property="lotteryId" />
+    <result column="PROM_ID" jdbcType="VARCHAR" property="promId" />
+    <result column="LOTTERY_CREATE_ID" jdbcType="VARCHAR" property="lotteryCreateId" />
+    <result column="AWARD_COUNT" jdbcType="VARCHAR" property="awardCount" />
+    <result column="LOTTERY_LIMIT" jdbcType="VARCHAR" property="lotteryLimit" />
+    <result column="ALIVE_FLAG" jdbcType="VARCHAR" property="aliveFlag" />
+    <result column="MARKET_ID" jdbcType="VARCHAR" property="marketId" />
+    <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="EXT1" jdbcType="VARCHAR" property="ext1" />
+    <result column="EXT2" jdbcType="VARCHAR" property="ext2" />
+    <result column="EXT3" jdbcType="VARCHAR" property="ext3" />
+    <result column="EXT4" jdbcType="VARCHAR" property="ext4" />
+    <result column="EXT5" jdbcType="VARCHAR" property="ext5" />
+    <result column="EXT6" jdbcType="VARCHAR" property="ext6" />
+    <result column="EXT7" jdbcType="VARCHAR" property="ext7" />
+    <result column="EXT8" jdbcType="VARCHAR" property="ext8" />
+    <result column="EXT9" jdbcType="VARCHAR" property="ext9" />
+    <result column="EXT10" jdbcType="VARCHAR" property="ext10" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    LOTTERY_ID, PROM_ID, LOTTERY_CREATE_ID, AWARD_COUNT, LOTTERY_LIMIT, ALIVE_FLAG, MARKET_ID, 
+    UPDATE_USER, UPDATE_DATE, CREATE_USER, CREATE_DATE, EXT1, EXT2, EXT3, EXT4, EXT5, 
+    EXT6, EXT7, EXT8, EXT9, EXT10
+  </sql>
+  <select id="selectByExample" parameterType="com.test.org.pojo.PromLotteryExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_prom_lottery
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.test.org.pojo.PromLotteryExample">
+    delete from t_prom_lottery
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.test.org.pojo.PromLottery">
+    insert into t_prom_lottery (LOTTERY_ID, PROM_ID, LOTTERY_CREATE_ID, 
+      AWARD_COUNT, LOTTERY_LIMIT, ALIVE_FLAG, 
+      MARKET_ID, UPDATE_USER, UPDATE_DATE, 
+      CREATE_USER, CREATE_DATE, EXT1, 
+      EXT2, EXT3, EXT4, EXT5, 
+      EXT6, EXT7, EXT8, EXT9, 
+      EXT10)
+    values (#{lotteryId,jdbcType=VARCHAR}, #{promId,jdbcType=VARCHAR}, #{lotteryCreateId,jdbcType=VARCHAR}, 
+      #{awardCount,jdbcType=VARCHAR}, #{lotteryLimit,jdbcType=VARCHAR}, #{aliveFlag,jdbcType=VARCHAR}, 
+      #{marketId,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{ext1,jdbcType=VARCHAR}, 
+      #{ext2,jdbcType=VARCHAR}, #{ext3,jdbcType=VARCHAR}, #{ext4,jdbcType=VARCHAR}, #{ext5,jdbcType=VARCHAR}, 
+      #{ext6,jdbcType=VARCHAR}, #{ext7,jdbcType=VARCHAR}, #{ext8,jdbcType=VARCHAR}, #{ext9,jdbcType=VARCHAR}, 
+      #{ext10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.org.pojo.PromLottery">
+    insert into t_prom_lottery
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lotteryId != null">
+        LOTTERY_ID,
+      </if>
+      <if test="promId != null">
+        PROM_ID,
+      </if>
+      <if test="lotteryCreateId != null">
+        LOTTERY_CREATE_ID,
+      </if>
+      <if test="awardCount != null">
+        AWARD_COUNT,
+      </if>
+      <if test="lotteryLimit != null">
+        LOTTERY_LIMIT,
+      </if>
+      <if test="aliveFlag != null">
+        ALIVE_FLAG,
+      </if>
+      <if test="marketId != null">
+        MARKET_ID,
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="createUser != null">
+        CREATE_USER,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="ext1 != null">
+        EXT1,
+      </if>
+      <if test="ext2 != null">
+        EXT2,
+      </if>
+      <if test="ext3 != null">
+        EXT3,
+      </if>
+      <if test="ext4 != null">
+        EXT4,
+      </if>
+      <if test="ext5 != null">
+        EXT5,
+      </if>
+      <if test="ext6 != null">
+        EXT6,
+      </if>
+      <if test="ext7 != null">
+        EXT7,
+      </if>
+      <if test="ext8 != null">
+        EXT8,
+      </if>
+      <if test="ext9 != null">
+        EXT9,
+      </if>
+      <if test="ext10 != null">
+        EXT10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lotteryId != null">
+        #{lotteryId,jdbcType=VARCHAR},
+      </if>
+      <if test="promId != null">
+        #{promId,jdbcType=VARCHAR},
+      </if>
+      <if test="lotteryCreateId != null">
+        #{lotteryCreateId,jdbcType=VARCHAR},
+      </if>
+      <if test="awardCount != null">
+        #{awardCount,jdbcType=VARCHAR},
+      </if>
+      <if test="lotteryLimit != null">
+        #{lotteryLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="aliveFlag != null">
+        #{aliveFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="marketId != null">
+        #{marketId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ext1 != null">
+        #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null">
+        #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="ext3 != null">
+        #{ext3,jdbcType=VARCHAR},
+      </if>
+      <if test="ext4 != null">
+        #{ext4,jdbcType=VARCHAR},
+      </if>
+      <if test="ext5 != null">
+        #{ext5,jdbcType=VARCHAR},
+      </if>
+      <if test="ext6 != null">
+        #{ext6,jdbcType=VARCHAR},
+      </if>
+      <if test="ext7 != null">
+        #{ext7,jdbcType=VARCHAR},
+      </if>
+      <if test="ext8 != null">
+        #{ext8,jdbcType=VARCHAR},
+      </if>
+      <if test="ext9 != null">
+        #{ext9,jdbcType=VARCHAR},
+      </if>
+      <if test="ext10 != null">
+        #{ext10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.test.org.pojo.PromLotteryExample" resultType="java.lang.Long">
+    select count(*) from t_prom_lottery
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_prom_lottery
+    <set>
+      <if test="record.lotteryId != null">
+        LOTTERY_ID = #{record.lotteryId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.promId != null">
+        PROM_ID = #{record.promId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lotteryCreateId != null">
+        LOTTERY_CREATE_ID = #{record.lotteryCreateId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardCount != null">
+        AWARD_COUNT = #{record.awardCount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lotteryLimit != null">
+        LOTTERY_LIMIT = #{record.lotteryLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aliveFlag != null">
+        ALIVE_FLAG = #{record.aliveFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.marketId != null">
+        MARKET_ID = #{record.marketId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateUser != null">
+        UPDATE_USER = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateDate != null">
+        UPDATE_DATE = #{record.updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createUser != null">
+        CREATE_USER = #{record.createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null">
+        CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ext1 != null">
+        EXT1 = #{record.ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext2 != null">
+        EXT2 = #{record.ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext3 != null">
+        EXT3 = #{record.ext3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext4 != null">
+        EXT4 = #{record.ext4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext5 != null">
+        EXT5 = #{record.ext5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext6 != null">
+        EXT6 = #{record.ext6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext7 != null">
+        EXT7 = #{record.ext7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext8 != null">
+        EXT8 = #{record.ext8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext9 != null">
+        EXT9 = #{record.ext9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext10 != null">
+        EXT10 = #{record.ext10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_prom_lottery
+    set LOTTERY_ID = #{record.lotteryId,jdbcType=VARCHAR},
+      PROM_ID = #{record.promId,jdbcType=VARCHAR},
+      LOTTERY_CREATE_ID = #{record.lotteryCreateId,jdbcType=VARCHAR},
+      AWARD_COUNT = #{record.awardCount,jdbcType=VARCHAR},
+      LOTTERY_LIMIT = #{record.lotteryLimit,jdbcType=VARCHAR},
+      ALIVE_FLAG = #{record.aliveFlag,jdbcType=VARCHAR},
+      MARKET_ID = #{record.marketId,jdbcType=VARCHAR},
+      UPDATE_USER = #{record.updateUser,jdbcType=VARCHAR},
+      UPDATE_DATE = #{record.updateDate,jdbcType=TIMESTAMP},
+      CREATE_USER = #{record.createUser,jdbcType=VARCHAR},
+      CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+      EXT1 = #{record.ext1,jdbcType=VARCHAR},
+      EXT2 = #{record.ext2,jdbcType=VARCHAR},
+      EXT3 = #{record.ext3,jdbcType=VARCHAR},
+      EXT4 = #{record.ext4,jdbcType=VARCHAR},
+      EXT5 = #{record.ext5,jdbcType=VARCHAR},
+      EXT6 = #{record.ext6,jdbcType=VARCHAR},
+      EXT7 = #{record.ext7,jdbcType=VARCHAR},
+      EXT8 = #{record.ext8,jdbcType=VARCHAR},
+      EXT9 = #{record.ext9,jdbcType=VARCHAR},
+      EXT10 = #{record.ext10,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
